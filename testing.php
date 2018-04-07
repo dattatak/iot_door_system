@@ -127,7 +127,7 @@
             }
             else{
               Materialize.toast('User  Not Identfied ');
-                abc("0");
+                postToThingspeak("0");
                 }
         });
     }

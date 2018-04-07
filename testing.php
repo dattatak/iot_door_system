@@ -122,22 +122,20 @@
             if(JSON.stringify(m).indexOf("success") > -1) {
                 Materialize.toast('User Identfied. Name : ' +JSON.stringify(m.images[0].candidates[0].subject_id), 6000);
                 console.log(m.images[0].candidates[0].subject_id);
-                   abc();
+                   postToThingspeak("1");
 
             }
             else{
-                abc1();
+              Materialize.toast('User  Not Identfied ');
+                abc("0");
                 }
         });
     }
-     function abc(){
-            $.post("https://api.thingspeak.com/update?api_key=LWPWGYKFMRD1U982&field2=1", function(result){});
+     function postToThingspeak(str){
+            $.post("https://api.thingspeak.com/update?api_key=LWPWGYKFMRD1U982&field2="+str, function(result){});
           }
-          function abc1(){
-            $.post("https://api.thingspeak.com/update?api_key=LWPWGYKFMRD1U982&field2=0", function(result){});
-          }
-          function myfunc()
-          {
+          
+    function myfunc(){
             //init();
             startWebcam();
             window.setTimeout(snapshot,2000);
